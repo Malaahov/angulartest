@@ -8,6 +8,14 @@
   display: grid;
   grid-template-columns: 1fr 15fr;
 }
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.footer{
+  display: grid;
+  grid-template-columns: 0.4fr 0.4fr 1fr;
+}
 
 .bigText{
   font-size: 120%;
@@ -80,7 +88,7 @@ p
   display:inline-block;
   width: 680px;
   height: 400px;
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   margin-right: 40px;
   margin-top: 20px;
@@ -89,10 +97,11 @@ p
 {
   background-color:white;
   display:inline-block;
-  width: 300px;
+  width: 200px;
   height: 400px;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
+  margin-top:20px;
 
 }
 .invoicesH
@@ -125,7 +134,7 @@ p
   padding: 10px;
   border-radius: 10px;
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .img{
   align:right;
