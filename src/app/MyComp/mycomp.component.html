@@ -1,63 +1,108 @@
-
 <div class="wrapped">
-<div>
-  <div [ngStyle]="{marginTop:'40%'}">
-    <button (click)="switchCaseNumber(0)"  [ngStyle]="{color:'white', borderWidth:'0',fontWeight:'bold',fontSize:'20px',background:'#0E6EFF', width:'250px', height:'50px', float:'left', borderRadius:'5px'}"><span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}" src="../assets/dashboard.png">Dashboard</span></button>
-    <button (click)="switchCaseNumber(1)" [ngStyle]="{color:'black', borderWidth:'0',fontWeight:'bold',fontSize:'20px',background:'white', width:'250px', height:'50px', borderRadius:'5px'}"><span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}" src="../assets/wallet.png">My Wallet</span></button>
-    <button (click)="switchCaseNumber(2)" [ngStyle]="{color:'black', borderWidth:'0',fontWeight:'bold',fontSize:'20px',background:'white', width:'250px', height:'50px', borderRadius:'5px'}"><span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}" src="../assets/payment.png">Payment</span></button>
-    <div [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}"><img [ngStyle]="{marginRight:'10px'}" src="../assets/invoice.png">Invoice</div>
-    <div [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}"><img [ngStyle]="{marginRight:'10px'}" src="../assets/settings.png">Setting</div>
-    <div [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}"><img [ngStyle]="{marginRight:'10px'}" src="../assets/payment.png">Transactions</div>
-    <div [ngStyle]="{fontWeight:'bold', marginTop:'40px'}">Payment Admin Dashboard</div>
+  <div>
+    <div [ngStyle]="{marginTop:'40%'}">
+      <button (click)="switchCaseNumber(0)"
+              [ngStyle]="{color:'white', borderWidth:'0',fontWeight:'bold',fontSize:'20px',background:'#0E6EFF', width:'250px', height:'50px', float:'left', borderRadius:'5px'}">
+        <span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}"
+                                              src="../assets/dashboard.png">Dashboard</span></button>
+      <button (click)="switchCaseNumber(1)"
+              [ngStyle]="{color:'black', borderWidth:'0',fontWeight:'bold',fontSize:'20px',background:'white', width:'250px', height:'50px', borderRadius:'5px'}">
+        <span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}"
+                                              src="../assets/wallet.png">My Wallet</span></button>
+      <button (click)="switchCaseNumber(2)"
+              [ngStyle]="{color:'black', borderWidth:'0',fontWeight:'bold',fontSize:'20px',background:'white', width:'250px', height:'50px', borderRadius:'5px'}">
+        <span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}"
+                                              src="../assets/payment.png">Payment</span></button>
+      <div
+        [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}">
+        <img [ngStyle]="{marginRight:'10px'}" src="../assets/invoice.png">Invoice
+      </div>
+      <div
+        [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}">
+        <img [ngStyle]="{marginRight:'10px'}" src="../assets/settings.png">Setting
+      </div>
+      <div
+        [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}">
+        <img [ngStyle]="{marginRight:'10px'}" src="../assets/payment.png">Transactions
+      </div>
+      <div [ngStyle]="{fontWeight:'bold', marginTop:'40px'}">Payment Admin Dashboard</div>
 
+    </div>
   </div>
-</div>
   <div [ngSwitch]="current">
-<div *ngSwitchCase="0" class="mainDiv"><p><span  [ngStyle]="{fontSize:'30px', marginRight:'7%'}">Dashboard</span> <input placeholder="Search here..." type="search" [ngStyle]="{width:'26%' ,borderWidth:'0px', borderRadius:'5px'}" class="form-text"><img [ngStyle]="{marginLeft:'50px'}" src="../../assets/notif.png"><img [ngStyle]="{marginLeft:'20px'}" src="../../assets/message.png"><img class="img" [ngStyle]="{width:'40px'}" src="../../assets/avatar.png">Hi Shamim</p>
-  <span class="total"><div class="invoicesH"><img src="../../assets/paid.png">{{totalInvoices}}</div><div class="invoicesB">Всего пришло денег</div></span> <span class="paid"><div class="invoicesH"><img src="../../assets/total.png">{{ paidInvoices}}</div><div class="invoicesB">Оплаченные счета</div></span> <span class="unpaid"><div class="invoicesH"><img src="../../assets/unpaid.png">{{unpaidInvoices}}</div><div class="invoicesB">Неоплаченные счета</div></span> <span class="totalSent"><div class="invoicesH">{{totalInvoicesSent}}</div><div class="invoicesB">Всего отправлено</div></span>
-  <div class="grid">
+    <div *ngSwitchCase="0" class="mainDiv"><p><span [ngStyle]="{fontSize:'30px', marginRight:'7%'}">Dashboard</span>
+      <input placeholder="Search here..." type="search" [ngStyle]="{width:'26%' ,borderWidth:'0px', borderRadius:'5px'}"
+             class="form-text"><img [ngStyle]="{marginLeft:'50px'}" src="../../assets/notif.png"><img
+        [ngStyle]="{marginLeft:'20px'}" src="../../assets/message.png"><img class="img" [ngStyle]="{width:'40px'}"
+                                                                            src="../../assets/avatar.png">Hi Shamim</p>
+      <span class="total"><div class="invoicesH"><img src="../../assets/paid.png">{{totalInvoices}}</div><div
+        class="invoicesB">Всего пришло денег</div></span> <span class="paid"><div class="invoicesH"><img
+        src="../../assets/total.png">{{ paidInvoices}}</div><div class="invoicesB">Оплаченные счета</div></span> <span
+        class="unpaid"><div class="invoicesH"><img src="../../assets/unpaid.png">{{unpaidInvoices}}</div><div
+        class="invoicesB">Неоплаченные счета</div></span> <span class="totalSent"><div
+        class="invoicesH">{{totalInvoicesSent}}</div><div class="invoicesB">Всего отправлено</div></span>
+      <div class="grid">
     <span class="latesTransactions">
     <div><p>latest transactions</p></div>
     <div>
-     <div class="latestTransactionGrid" *ngFor="let name of transactions" [ngStyle]="{padding:'10px' ,borderRadius: '5px'}"><div> <span>{{name.name}}</span>{{''}}</div> <div><img *ngIf="name.plus" src="../../assets/plus.png"><img *ngIf="!name.plus" src="../../assets/minus.png"><span>{{name.amount}}$</span></div><div>{{name.date}}</div> </div>
+     <div class="latestTransactionGrid" *ngFor="let name of transactions"
+          [ngStyle]="{padding:'10px' ,borderRadius: '5px'}"><div> <span>{{name.name}}</span>{{''}}</div> <div><img
+       *ngIf="name.plus" src="../../assets/plus.png"><img *ngIf="!name.plus"
+                                                          src="../../assets/minus.png"><span>{{name.amount}}
+       $</span></div><div>{{name.date}}</div> </div>
 
     </div>
 
 </span>
 
+        <span class="statistic">
+          <p>Statistic</p>
+<google-chart #chart
+              [title]="title"
+              [type]="type"
+              [data]="data"
 
-<span class="statistic">
-  <p>Statistic</p>
+              [options]="options"
+              [width]="width"
+              [height]="height">
+</google-chart>
+
 </span>
 
-
-
-
- </div>
-  <div class="footer">
-   <div> <span class="balance"><div><p [ngStyle]="{color:'white' ,fontSize:'15px'}">Balance</p></div>
-      <div><span [ngStyle]="{color:'white' ,fontWeight:'Bold' ,fontSize:'23px'}">$ {{balance}} </span><span [ngStyle]="{color:'white' , textAlign:'Right'}">   **** **** **** 3456</span></div>
+      </div>
+      <div class="footer">
+        <div> <span class="balance"><div><p [ngStyle]="{color:'white' ,fontSize:'15px'}">Balance</p></div>
+      <div><span [ngStyle]="{color:'white' ,fontWeight:'Bold' ,fontSize:'23px'}">$ {{balance}} </span><span
+        [ngStyle]="{color:'white' , textAlign:'Right'}">   **** **** **** 3456</span></div>
     <div>valid Thru</div>
-   </span>  <div [ngStyle]="{background: 'white', height:'90px'}" class="balance"><div>Transactions</div>{{totalTransactions}}</div>  </div>
-    <div class="balanceDetails">Balance Detail</div>
-    <div class="balanceDetails">Activity</div>
-  </div>
-
-</div>
+   </span>
+          <div [ngStyle]="{background: 'white', height:'90px'}" class="balance">
+            <div>Transactions</div>
+            {{totalTransactions}}</div>
+        </div>
+        <div class="balanceDetails">Balance Detail</div>
+        <div class="balanceDetails">Activity</div>
+      </div>
+    </div>
     <div class="mainDiv" *ngSwitchCase="1">
-      <p  [ngStyle]="{fontSize:'30px', marginRight:'7%'}">My Wallet</p><div>Сумма<input [(ngModel)]="inputBalance"></div><div>Описание<input [(ngModel)]="sendFor"></div>
+      <p [ngStyle]="{fontSize:'30px', marginRight:'7%'}">My Wallet</p>
+      <div>Сумма<input [(ngModel)]="inputBalance"></div>
+      <div>Описание<input [(ngModel)]="sendFor"></div>
       <button class="btn btn-primary" (click)="addBalanceCount()">Добавить</button>
-    <hr>
+      <hr>
+
       <input placeholder="Сумма" [(ngModel)]="inputBalance">
       <input [(ngModel)]="sendFor">
-      <button class="btn btn-primary" (click)="sendMoney()">Отправить</button></div>
+      <button class="btn btn-primary" (click)="sendMoney()">Отправить</button>
+    </div>
     <div class="mainDiv" *ngSwitchCase="2">
-      <p  [ngStyle]="{fontSize:'30px', marginRight:'7%'}">Неоплаченные счета</p>
+      <p [ngStyle]="{fontSize:'30px', marginRight:'7%'}">Неоплаченные счета</p>
       <div *ngFor="let bills of bills; let idx=index;">{{bills.name}}
-        <button (click)="payBill(bills.name,bills.price, idx)">Оплатить</button></div>
+        <button (click)="payBill(bills.name,bills.price, idx)">Оплатить</button>
+      </div>
 
 
-</div>
-</div>
+    </div>
+  </div>
 
 
