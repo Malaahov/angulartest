@@ -9,7 +9,12 @@ import {StoreService} from "../store.service";
 
 })
 export class PayBills {
-
+  activeSum:number=0;
+  activeName:string='';
+  activeType:number=1;
+  passiveSum:number=0;
+  passiveName:string='';
+  passiveType:number=1;
   store:any=[];
   private _storeService;
   constructor(private http:HttpClient, storeService: StoreService) {
@@ -22,5 +27,13 @@ export class PayBills {
   payBill(name:string,price:number,index:number)
   {
 this._storeService.payBills(name,price,index);
+  }
+  addActives()
+  {
+this._storeService.addActives(this.activeSum,this.activeName,this.activeType);
+  }
+  addPassives()
+  {
+    this._storeService.addPassives(this.passiveSum,this.passiveName,this.passiveType);
   }
 }
