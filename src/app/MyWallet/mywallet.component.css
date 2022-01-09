@@ -1,0 +1,164 @@
+@font-face {
+  font-family: DM Sans;
+  src: url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap') format("opentype");
+}
+
+.wrapped
+{
+  display: grid;
+  grid-template-columns: 1fr 15fr;
+}
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.footer{
+  display: grid;
+  grid-template-columns: 0.4fr 0.4fr 1fr;
+}
+
+.bigText{
+  font-size: 120%;
+}
+
+p
+{
+ font-family: 'DM Sans' ,'arial', sans-serif;;
+  font-weight: bold;
+  font-size: 23px;
+}
+.pBalance{
+font-family: 'DM Sans' ,'arial', sans-serif;;
+  font-weight: bold;
+  font-size: 15px;
+  color:white;
+}
+.balanceBody
+{
+  color:white;
+  font-weight: Bold;
+  font-size:23px;
+}
+
+.mainDiv
+{
+  padding: 50px;
+  background-color:  #E5E5E5;
+  border-radius: 10px;
+}
+.total
+{
+  background-color: #03B664;
+  display:inline-block;
+  width: 200px;
+  height: 90px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 40px;
+}
+.paid
+{
+  background-color: #01BEFF;
+  display:inline-block;
+  width: 200px;
+  height: 90px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 40px;
+}
+
+.unpaid
+{
+  background-color: #FFBF26;
+  display:inline-block;
+  width: 200px;
+  height: 90px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 40px;
+}
+
+.totalSent
+{
+  background-color: #FF684D;
+  display:inline-block;
+  width: 200px;
+  height: 90px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 40px;
+}
+.latestTransactionGrid
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.latesTransactions
+{
+
+  background-color:white;
+  display:inline-block;
+  width: 680px;
+  height: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  margin-right: 40px;
+  margin-top: 20px;
+}
+.statistic
+{
+  background-color:white;
+  display:inline-block;
+  width: 200px;
+  height: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top:20px;
+
+}
+.invoicesH
+{
+  font-weight: bold;
+  color: white;
+  font-size: 20px;
+}
+.invoicesB
+{
+
+  color: white;
+  font-size: 14px;
+}
+
+.balance {
+  background: linear-gradient(247.35deg, #936DFF 0%, #3ED1FF 100%);
+  display: inline-block;
+  width: 300px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.transactionsCount{
+
+  display: inline-block;
+  width: 300px;
+  height: 90px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.balanceDetails {
+  background: white;
+  display: inline-block;
+  width: 300px;
+  height: 250px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.img{
+  align:right;
+  margin-left: 2%;
+}
+

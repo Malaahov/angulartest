@@ -1,0 +1,3 @@
+<p [ngStyle]="{fontSize:'30px', marginRight:'7%'}">Неоплаченные счета</p>
+<div  *ngFor="let bills of store[0].bills; let idx=index;" >{{bills.name}}
+  <button  (click)="payBill(bills.name,bills.price, idx)">Оплатить</button>

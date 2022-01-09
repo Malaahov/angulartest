@@ -6,12 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MyComponent} from './MyComp/mycomp.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MyWallet} from "./MyWallet/mywallet.component";
+import {StoreService} from "./store.service";
+import {PayBills} from "./PayBills/paybills.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MyComponent,
+    MyWallet,
+    PayBills
 
   ],
   imports: [
@@ -21,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { GoogleChartComponent, ChartType } from 'angular-google-charts';
 import { HttpClient} from "@angular/common/http";
+import {StoreService} from "../store.service";
 
 @Component({
   selector: '[app-my]',
@@ -14,7 +15,7 @@ export class MyComponent implements OnInit {
   totalTransactions:number = 0;
   sendFor:string='';
   inputBalance:number = 0;
-  balance:number = 0;
+  store:any = [];
   billsPaid:number= 0;
   totalInvoices:number = 0;
   paidInvoices:number = 0;
@@ -47,13 +48,15 @@ export class MyComponent implements OnInit {
   {
     this.current=number;
   }
-  constructor(private http:HttpClient) {
-
+  private _storeService;
+  constructor(private http:HttpClient, storeService: StoreService) {
+this._storeService = storeService;
   }
   ngOnInit()
   {
     this.http.get('https://60f53a592208920017f39f9d.mockapi.io/balance/1').subscribe((data:any) => {
-        this.balance = data.money;
+      this._storeService.setStore(data);
+        this.store = this._storeService.getStore();
         this.totalInvoices= data.totalInvoices;
         this.transactions=data.transactions;
         this.bills=data.bills;
@@ -73,16 +76,16 @@ export class MyComponent implements OnInit {
 
 payBill(name:string, price:number, index:number)
 {
-  if(this.balance>price)
+  if(this.store[0].balance>price)
   {
-    this.balance = this.balance - price;
+    this.store[0].balance = this.store[0].balance - price;
     this.paidInvoices= this.paidInvoices +=+ 1;
     this.unpaidInvoices=this.unpaidInvoices - 1;
     this.billsPaid=this.billsPaid +=+ price;
     this.transactions.push({name:'Оплата '+name,amount:price,plus:false,date:new Date()});
     this.totalTransactions++;
    delete this.bills[index];
-    const body= {money:this.balance ,transactionsCount:this.totalTransactions, bills:this.bills,paidBills:this.billsPaid, paidInvoices:this.paidInvoices,  totalInvoices:this.totalInvoices, unpaidInvoices:this.unpaidInvoices, transactions:this.transactions};
+    const body= {money:this.store[0].balance ,transactionsCount:this.totalTransactions, bills:this.bills,paidBills:this.billsPaid, paidInvoices:this.paidInvoices,  totalInvoices:this.totalInvoices, unpaidInvoices:this.unpaidInvoices, transactions:this.transactions};
     this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', body).subscribe(
       (data)=>{
 
@@ -92,44 +95,14 @@ payBill(name:string, price:number, index:number)
   else {
 alert('Недостаточно денег')
   }
+
 }
-sendMoney()
-{
-if(this.inputBalance>this.balance)
-{
-  alert('Недостаточно средств')
-}
-else {
-  this.balance=this.balance-this.inputBalance;
-  this.totalInvoicesSent=this.totalInvoicesSent +=+ this.inputBalance;
-  this.totalTransactions++;
-  this.transactions.push({name:'Перевод на имя '+this.sendFor,amount:this.inputBalance,plus:false,date:new Date()});
-  const body= {money:this.balance ,transactionsCount:this.totalTransactions, totalInvoices:this.totalInvoices, transactions:this.transactions};
-  this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', body).subscribe(
-    (data)=>{
-
-    }
-  );
-}
-}
-addBalanceCount()
-  {
-this.balance= this.balance +=+ this.inputBalance;
-this.totalInvoices = this.totalInvoices +=+ this.inputBalance;
-this.totalTransactions++;
-    this.transactions.push({name:this.sendFor,amount:this.inputBalance,plus:true,date:new Date()});
-    this.current=0;
-const body= {money:this.balance ,transactionsCount:this.totalTransactions, totalInvoices:this.totalInvoices, transactions:this.transactions};
-    this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', body).subscribe(
-      (data)=>{
-
-      }
-    );
 
 
 
 
-  }
+
+
 
 
 
