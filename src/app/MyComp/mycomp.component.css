@@ -27,6 +27,18 @@ p
   font-weight: bold;
   font-size: 23px;
 }
+.pBalance{
+font-family: 'DM Sans' ,'arial', sans-serif;;
+  font-weight: bold;
+  font-size: 15px;
+  color:white;
+}
+.balanceBody
+{
+  color:white;
+  font-weight: Bold;
+  font-size:23px;
+}
 
 .mainDiv
 {
@@ -122,6 +134,15 @@ p
   display: inline-block;
   width: 300px;
   height: 150px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.transactionsCount{
+
+  display: inline-block;
+  width: 300px;
+  height: 90px;
   padding: 10px;
   border-radius: 10px;
   margin-top: 10px;

@@ -1,31 +1,34 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { GoogleChartComponent, ChartType } from 'angular-google-charts';
+import { HttpClient} from "@angular/common/http";
+
 @Component({
   selector: '[app-my]',
   templateUrl: './mycomp.component.html',
-  styleUrls: ['./mycomp.component.css']
-})
-export class MyComponent {
+  styleUrls: ['./mycomp.component.css'],
 
-  totalTransactions:number = 1;
+})
+export class MyComponent implements OnInit {
+
+
+  totalTransactions:number = 0;
   sendFor:string='';
   inputBalance:number = 0;
-  balance:number = 2000;
-  totalInvoices:number = 2000;
+  balance:number = 0;
+  billsPaid:number= 0;
+  totalInvoices:number = 0;
   paidInvoices:number = 0;
   unpaidInvoices:number = 0;
-  totalInvoicesSent:number = 200;
+  totalInvoicesSent:number = 0;
   title = '';
   type = ChartType.ColumnChart;
   data = [
     ['1', this.totalInvoices],
     ['2', this.paidInvoices],
-    ['3', this.unpaidInvoices],
-    ['4', this.totalInvoicesSent],
-  ];
 
+  ];
   options = {
-    colors: ['#03B664', '#01BEFF', '#FFBF26', '#FF684D']
+    colors: ['#03B664', 'red' ]
   };
   width = 150;
   height = 300;
@@ -44,8 +47,28 @@ export class MyComponent {
   {
     this.current=number;
   }
-  constructor() {
+  constructor(private http:HttpClient) {
 
+  }
+  ngOnInit()
+  {
+    this.http.get('https://60f53a592208920017f39f9d.mockapi.io/balance/1').subscribe((data:any) => {
+        this.balance = data.money;
+        this.totalInvoices= data.totalInvoices;
+        this.transactions=data.transactions;
+        this.bills=data.bills;
+        this.billsPaid= data.paidBills;
+        this.paidInvoices = data.paidInvoices;
+        this.unpaidInvoices = data.unpaidInvoices;
+        this.totalInvoicesSent = data.totalInvoicesSent;
+        this.totalTransactions = data.transactionsCount;
+        this.data = [
+        ['1', this.totalInvoices],
+        ['2', this.billsPaid],
+
+      ];
+      }
+    )
   }
 
 payBill(name:string, price:number, index:number)
@@ -53,10 +76,18 @@ payBill(name:string, price:number, index:number)
   if(this.balance>price)
   {
     this.balance = this.balance - price;
-    this.paidInvoices= this.paidInvoices +=+ price;
+    this.paidInvoices= this.paidInvoices +=+ 1;
+    this.unpaidInvoices=this.unpaidInvoices - 1;
+    this.billsPaid=this.billsPaid +=+ price;
     this.transactions.push({name:'Оплата '+name,amount:price,plus:false,date:new Date()});
     this.totalTransactions++;
    delete this.bills[index];
+    const body= {money:this.balance ,transactionsCount:this.totalTransactions, bills:this.bills,paidBills:this.billsPaid, paidInvoices:this.paidInvoices,  totalInvoices:this.totalInvoices, unpaidInvoices:this.unpaidInvoices, transactions:this.transactions};
+    this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', body).subscribe(
+      (data)=>{
+
+      }
+    );
   }
   else {
 alert('Недостаточно денег')
@@ -73,15 +104,30 @@ else {
   this.totalInvoicesSent=this.totalInvoicesSent +=+ this.inputBalance;
   this.totalTransactions++;
   this.transactions.push({name:'Перевод на имя '+this.sendFor,amount:this.inputBalance,plus:false,date:new Date()});
+  const body= {money:this.balance ,transactionsCount:this.totalTransactions, totalInvoices:this.totalInvoices, transactions:this.transactions};
+  this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', body).subscribe(
+    (data)=>{
+
+    }
+  );
 }
 }
 addBalanceCount()
   {
 this.balance= this.balance +=+ this.inputBalance;
 this.totalInvoices = this.totalInvoices +=+ this.inputBalance;
-    this.totalTransactions++;
+this.totalTransactions++;
     this.transactions.push({name:this.sendFor,amount:this.inputBalance,plus:true,date:new Date()});
-this.current=0;
+    this.current=0;
+const body= {money:this.balance ,transactionsCount:this.totalTransactions, totalInvoices:this.totalInvoices, transactions:this.transactions};
+    this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', body).subscribe(
+      (data)=>{
+
+      }
+    );
+
+
+
 
   }
 

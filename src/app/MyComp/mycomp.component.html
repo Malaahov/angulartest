@@ -45,8 +45,7 @@
     <span class="latesTransactions">
     <div><p>latest transactions</p></div>
     <div>
-     <div class="latestTransactionGrid" *ngFor="let name of transactions"
-          [ngStyle]="{padding:'10px' ,borderRadius: '5px'}"><div> <span>{{name.name}}</span>{{''}}</div> <div><img
+     <div class="latestTransactionGrid" *ngFor="let name of transactions"><div> <span>{{name.name}}</span>{{''}}</div> <div><img
        *ngIf="name.plus" src="../../assets/plus.png"><img *ngIf="!name.plus"
                                                           src="../../assets/minus.png"><span>{{name.amount}}
        $</span></div><div>{{name.date}}</div> </div>
@@ -71,12 +70,12 @@
 
       </div>
       <div class="footer">
-        <div> <span class="balance"><div><p [ngStyle]="{color:'white' ,fontSize:'15px'}">Balance</p></div>
-      <div><span [ngStyle]="{color:'white' ,fontWeight:'Bold' ,fontSize:'23px'}">$ {{balance}} </span><span
-        [ngStyle]="{color:'white' , textAlign:'Right'}">   **** **** **** 3456</span></div>
+        <div> <span class="balance"><div><p class="pBalance">Balance</p></div>
+      <div><span class="balanceBody">$ {{balance}} </span><span
+        [ngStyle]="{color:'white'}">   **** **** **** 3456</span></div>
     <div>valid Thru</div>
    </span>
-          <div [ngStyle]="{background: 'white', height:'90px'}" class="balance">
+          <div  class="transactionsCount">
             <div>Transactions</div>
             {{totalTransactions}}</div>
         </div>
