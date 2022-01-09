@@ -30,58 +30,8 @@
     </div>
   </div>
   <div [ngSwitch]="current">
-    <div *ngSwitchCase="0" class="mainDiv"><p><span [ngStyle]="{fontSize:'30px', marginRight:'7%'}">Dashboard</span>
-      <input placeholder="Search here..." type="search" [ngStyle]="{width:'26%' ,borderWidth:'0px', borderRadius:'5px'}"
-             class="form-text"><img [ngStyle]="{marginLeft:'50px'}" src="../../assets/notif.png"><img
-        [ngStyle]="{marginLeft:'20px'}" src="../../assets/message.png"><img class="img" [ngStyle]="{width:'40px'}"
-                                                                            src="../../assets/avatar.png">Hi Shamim</p>
-      <span class="total"><div class="invoicesH"><img src="../../assets/paid.png">{{store[0].totalInvoices}}</div><div
-        class="invoicesB">Всего пришло денег</div></span> <span class="paid"><div class="invoicesH"><img
-        src="../../assets/total.png">{{ store[0].paidInvoices}}</div><div class="invoicesB">Оплаченные счета</div></span> <span
-        class="unpaid"><div class="invoicesH"><img src="../../assets/unpaid.png">{{store[0].unpaidInvoices}}</div><div
-        class="invoicesB">Неоплаченные счета</div></span> <span class="totalSent"><div
-        class="invoicesH">{{store[0].totalInvoicesSent}}</div><div class="invoicesB">Всего отправлено</div></span>
-      <div class="grid">
-    <span class="latesTransactions">
-    <div><p>latest transactions</p></div>
-    <div>
-     <div class="latestTransactionGrid" *ngFor="let name of transactions"><div> <span>{{name.name}}</span>{{''}}</div> <div><img
-       *ngIf="name.plus" src="../../assets/plus.png"><img *ngIf="!name.plus"
-                                                          src="../../assets/minus.png"><span>{{name.amount}}
-       $</span></div><div>{{name.date}}</div> </div>
-
-    </div>
-
-</span>
-
-        <span class="statistic">
-          <p>Statistic</p>
-<google-chart #chart
-              [title]="title"
-              [type]="type"
-              [data]="data"
-
-              [options]="options"
-              [width]="width"
-              [height]="height">
-</google-chart>
-
-</span>
-
-      </div>
-      <div class="footer">
-        <div> <span class="balance"><div><p class="pBalance">Balance</p></div>
-      <div><span class="balanceBody">$ {{store[0].balance}} </span><span
-        [ngStyle]="{color:'white'}">   **** **** **** 3456</span></div>
-    <div>valid Thru</div>
-   </span>
-          <div  class="transactionsCount">
-            <div>Transactions</div>
-            {{totalTransactions}}</div>
-        </div>
-        <div class="balanceDetails">Balance Detail</div>
-        <div class="balanceDetails">Activity</div>
-      </div>
+    <div *ngSwitchCase="0" class="mainDiv">
+<dash-comp></dash-comp>
     </div>
     <div class="mainDiv" *ngSwitchCase="1">
 <my-wallet></my-wallet>

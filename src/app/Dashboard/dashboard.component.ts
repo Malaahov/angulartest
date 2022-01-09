@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import { GoogleChartComponent, ChartType } from 'angular-google-charts';
 import { HttpClient} from "@angular/common/http";
 import {StoreService} from "../store.service";
+import {ChartType} from "angular-google-charts";
 
 @Component({
-  selector: '[app-my]',
-  templateUrl: './mycomp.component.html',
-  styleUrls: ['./mycomp.component.css'],
+  selector: 'dash-comp',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
 
 })
-export class MyComponent implements OnInit {
+export class Dashboard implements OnInit {
 
 
   totalTransactions:number = 0;
@@ -48,19 +48,19 @@ export class MyComponent implements OnInit {
   }
   private _storeService;
   constructor(private http:HttpClient, storeService: StoreService) {
-this._storeService = storeService;
+    this._storeService = storeService;
   }
   ngOnInit()
   {
     this.http.get('https://60f53a592208920017f39f9d.mockapi.io/balance/1').subscribe((data:any) => {
-      this._storeService.setStore(data);
+        this._storeService.setStore(data);
         this.store = this._storeService.getStore();
 
         this.data = [
-        ['1', this.store[0].totalInvoices],
-        ['2', this.store[0].billsPaid],
+          ['1', this.store[0].totalInvoices],
+          ['2', this.store[0].billsPaid],
 
-      ];
+        ];
       }
     )
   }
