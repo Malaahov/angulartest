@@ -8,6 +8,13 @@ private store = [
   {balance:1000, totalInvoices:0,transactions:[{name:'',amount:0,plus:true,date: new Date()}],bills:[],billsPaid:0,paidInvoices:0,unpaidInvoices:0,totalInvoicesSent:0,totalTransactions:0}
 ]
   constructor(private http:HttpClient) { }
+  ngOnInit()
+  {
+    this.http.get('https://60f53a592208920017f39f9d.mockapi.io/balance/1').subscribe((data:any) => {
+        this.store=data;
+      }
+    )
+  }
 public getStore(){
 
   return this.store;
@@ -26,7 +33,6 @@ public sendMoneyTo(balance:number,name:string)
     const body= {money:this.store[0].balance ,transactionsCount:this.store[0].totalTransactions, bills:this.store[0].bills,paidBills:this.store[0].billsPaid, paidInvoices:this.store[0].paidInvoices, totalInvoicesSent:this.store[0].totalInvoicesSent,  totalInvoices:this.store[0].totalInvoices, unpaidInvoices:this.store[0].unpaidInvoices, transactions:this.store[0].transactions};
     this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', body).subscribe(
       (data)=>{
-
       }
     );
   }
