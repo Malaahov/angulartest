@@ -1,27 +1,25 @@
 <div class="wrapped">
   <div>
     <div [ngStyle]="{marginTop:'40%'}">
-      <button (click)="switchCaseNumber(0)"
-              [ngStyle]="{color:'white', borderWidth:'0',fontWeight:'bold',fontSize:'20px',background:'#0E6EFF', width:'250px', height:'50px', float:'left', borderRadius:'5px'}">
+      <a routerLink="" class="activeLink">
         <span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}"
-                                              src="../assets/dashboard.png">Dashboard</span></button>
-      <button (click)="switchCaseNumber(1)"
-              [ngStyle]="{color:'black', borderWidth:'0',fontWeight:'bold',fontSize:'20px',background:'white', width:'250px', height:'50px', borderRadius:'5px'}">
+                                              src="../assets/dashboard.png">Dashboard</span></a>
+      <a routerLink="wallet" class="link" >
         <span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}"
-                                              src="../assets/wallet.png">My Wallet</span></button>
-      <button (click)="switchCaseNumber(2)"
-              [ngStyle]="{color:'black', borderWidth:'0',fontWeight:'bold',fontSize:'20px',background:'white', width:'250px', height:'50px', borderRadius:'5px'}">
+                                              src="../assets/wallet.png">My Wallet</span></a>
+      <a routerLink="bills" class="link"
+              >
         <span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}"
-                                              src="../assets/payment.png">Payment</span></button>
-      <div
+                                              src="../assets/payment.png">Payment</span></a>
+      <div class="link"
         [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}">
         <img [ngStyle]="{marginRight:'10px'}" src="../assets/invoice.png">Invoice
       </div>
-      <div
+      <div class="link"
         [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}">
         <img [ngStyle]="{marginRight:'10px'}" src="../assets/settings.png">Setting
       </div>
-      <div
+      <div class="link"
         [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}">
         <img [ngStyle]="{marginRight:'10px'}" src="../assets/payment.png">Transactions
       </div>
@@ -29,17 +27,9 @@
 
     </div>
   </div>
-  <div [ngSwitch]="current">
-    <div *ngSwitchCase="0" class="mainDiv">
-<dash-comp></dash-comp>
-    </div>
-    <div class="mainDiv" *ngSwitchCase="1">
-<my-wallet></my-wallet>
+  <div >
+    <router-outlet></router-outlet>
 
-    </div>
-    <div class="mainDiv" *ngSwitchCase="2">
-      <pay-bills></pay-bills>
-      </div>
 
 
     </div>

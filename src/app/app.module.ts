@@ -12,9 +12,10 @@ import {PayBills} from "./PayBills/paybills.component";
 import { Routes, RouterModule} from "@angular/router";
 import {Dashboard} from "./Dashboard/dashboard.component";
  const appRoutes: Routes =[
-   {path:'', component:MyComponent},
+   {path:'', component:Dashboard},
    {path:'wallet', component:MyWallet},
    {path:'bills', component:PayBills}
+
  ]
 
 @NgModule({
