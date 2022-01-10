@@ -12,18 +12,17 @@ import {activesType, passivesType, storeType} from "../types/types";
 })
 
 export class Dashboard implements OnInit {
+  private _storeService;
   totalTransactions:number = 0;
   store:Array<storeType> = [];
   activeSums:number=0;
   passiveSum:number=0;
   currentPage:number=1;
-  billsPaid:number= 0;
-  totalInvoices:number = 0;
-  paidInvoices:number = 0;
-  unpaidInvoices:number = 0;
-  totalInvoicesSent:number = 0;
   title = '';
   type = ChartType.PieChart;
+  constructor(private http:HttpClient, storeService: StoreService) {
+    this._storeService = storeService;
+  }
   activesSum(actives:Array<activesType>){
     for (var i = 0; i< actives.length; i++)
     {
@@ -57,13 +56,13 @@ export class Dashboard implements OnInit {
       {
         this.passiveSum+= passives[i].sum;
       }
-
     }
     return this.passiveSum;
   }
+
   data = [
-    ['1', this.activeSums],
-    ['2', this.passiveSum],
+    ['Активы', this.activeSums],
+    ['Пассивы', this.passiveSum],
   ];
   options = {
     colors: ['#03B664', 'red' ]
@@ -72,15 +71,8 @@ export class Dashboard implements OnInit {
   height = 300;
   bills=[
     {name:'', price:0}
-
   ]
 
-
-
-  private _storeService;
-  constructor(private http:HttpClient, storeService: StoreService) {
-    this._storeService = storeService;
-  }
   getDate(date:Date)
   {
     const dates:string =  new Date(date).getDate() + "/" + (new Date(date).getMonth()+1)+"/" + new Date(date).getFullYear();
@@ -88,17 +80,15 @@ export class Dashboard implements OnInit {
   }
   ngOnInit()
   {
-    this.http.get('https://60f53a592208920017f39f9d.mockapi.io/balance/1').subscribe((data:any) => {
-        this._storeService.setStore(data);
-        this.store = this._storeService.getStore();
-      this.activesSum(this.store[0].actives);
-      this.passivesSum(this.store[0].passives);
-      this.data = [
-        ['Активы', this.activeSums],
-        ['Пассивы', this.passiveSum],
-      ];
-      }
-    )
+    this._storeService.setStore();
+    this.store = this._storeService.getStore();
+    this.activesSum(this.store[0].actives);;
+    this.passivesSum(this.store[0].passives);
+    this.data = [
+      ['Активы', this.activeSums],
+      ['Пассивы', this.passiveSum],
+    ];
+
   }
 
 

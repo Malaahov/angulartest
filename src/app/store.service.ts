@@ -1,6 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
 import { HttpClient} from "@angular/common/http";
-import { storeType} from "./types/types";
+import {activesType, passivesType, storeType} from "./types/types";
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,7 @@ export class StoreService implements OnInit {
 private store:Array<storeType>= [
   {balance:1000,actives:[{name:'',sum:0,type:1}],passives:[{name:'',sum:0,type:1}], totalInvoices:0,transactions:[{name:'',amount:0,plus:true,date: new Date()}],bills:[{name:'111',price:111}],billsPaid:0,paidInvoices:0,unpaidInvoices:0,totalInvoicesSent:0,totalTransactions:0}
 ]
+  private passiveSum:number=0;
   constructor(private http:HttpClient) { }
 public getStore(){
   return this.store;
@@ -101,30 +102,46 @@ this.store[0].transactions.push({name:name,amount:balance,plus:true,date:new Dat
     }
   );
 }
-public setStore(data:storeType){
+  passivesSum(passives:Array<passivesType>){
+    for (var i = 0; i< passives.length; i++)
+    {
+      if(passives[i].type == 1)
+      {
+        this.passiveSum+= (passives[i].sum*4);
+      }
+      if(passives[i].type == 2)
+      {
+        this.passiveSum+= (passives[i].sum*2);
+      }
+      if(passives[i].type == 3)
+      {
+        this.passiveSum+= passives[i].sum;
+      }
 
-  this.store[0].balance=data.balance;
-  this.store[0].totalInvoices=data.totalInvoices;
-  this.store[0].transactions=data.transactions;
-  this.store[0].bills=data.bills;
-  this.store[0].billsPaid=data.billsPaid;
-  this.store[0].paidInvoices=data.paidInvoices;
-  this.store[0].unpaidInvoices=data.unpaidInvoices;
-  this.store[0].totalInvoicesSent=data.totalInvoicesSent;
-  this.store[0].totalTransactions=data.totalTransactions;
-  this.store[0].actives=data.actives;
-  this.store[0].passives=data.passives;
+    }
+    alert(this.passiveSum);
+    return this.passiveSum;
+  }
+public setStore(){
+  this.http.get('https://60f53a592208920017f39f9d.mockapi.io/balance/1').subscribe((data:any) => {
+    this.store[0].balance=data.balance;
+    this.store[0].totalInvoices=data.totalInvoices;
+    this.store[0].transactions=data.transactions;
+    this.store[0].bills=data.bills;
+    this.store[0].billsPaid=data.billsPaid;
+    this.store[0].paidInvoices=data.paidInvoices;
+    this.store[0].unpaidInvoices=data.unpaidInvoices;
+    this.store[0].totalInvoicesSent=data.totalInvoicesSent;
+    this.store[0].totalTransactions=data.totalTransactions;
+    this.store[0].actives=data.actives;
+    this.store[0].passives=data.passives;
+  });
+
 
 }
   ngOnInit()
   {
-    this.http.get('https://60f53a592208920017f39f9d.mockapi.io/balance/1').subscribe((data:any) => {
-      this.setStore(data);
-        this.store = this.getStore();
 
-
-      }
-    )
   }
 }
 
