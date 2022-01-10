@@ -15,7 +15,7 @@
     <span class="latesTransactions">
     <div><p>Latest transactions</p></div>
     <div>
-     <div class="latestTransactionGrid" *ngFor="let name of this.store[0].transactions | paginate:
+     <div class="latestTransactionGrid" *ngFor="let name of this.store[0].transactions.reverse() | paginate:
   {itemsPerPage:5, currentPage: currentPage}"><div> <span>{{name.name}}</span>{{''}}</div> <div><img
        *ngIf="name.plus" src="../../assets/plus.png"><img *ngIf="!name.plus"
                                                           src="../../assets/minus.png"><span>{{name.amount}}
