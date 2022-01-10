@@ -11,6 +11,7 @@ import {StoreService} from "./store.service";
 import {PayBills} from "./PayBills/paybills.component";
 import { Routes, RouterModule} from "@angular/router";
 import {Dashboard} from "./Dashboard/dashboard.component";
+import {NgxPaginationModule} from 'ngx-pagination';
  const appRoutes: Routes =[
    {path:'', component:Dashboard},
    {path:'wallet', component:MyWallet},
@@ -30,6 +31,7 @@ import {Dashboard} from "./Dashboard/dashboard.component";
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgxPaginationModule,
     GoogleChartsModule,
     FormsModule,
     AppRoutingModule,

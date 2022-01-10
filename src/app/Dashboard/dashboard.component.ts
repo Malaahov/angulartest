@@ -14,6 +14,7 @@ export class Dashboard implements OnInit {
   store:any = [];
   activeSums:number=0;
   passiveSum:number=0;
+  currentPage:number=1;
   billsPaid:number= 0;
   totalInvoices:number = 0;
   paidInvoices:number = 0;

@@ -15,10 +15,15 @@
     <span class="latesTransactions">
     <div><p>Latest transactions</p></div>
     <div>
-     <div class="latestTransactionGrid" *ngFor="let name of this.store[0].transactions"><div> <span>{{name.name}}</span>{{''}}</div> <div><img
+     <div class="latestTransactionGrid" *ngFor="let name of this.store[0].transactions | paginate:
+  {itemsPerPage:5, currentPage: currentPage}"><div> <span>{{name.name}}</span>{{''}}</div> <div><img
        *ngIf="name.plus" src="../../assets/plus.png"><img *ngIf="!name.plus"
                                                           src="../../assets/minus.png"><span>{{name.amount}}
        $</span></div><div>{{name.date}}</div> </div>
+
+    </div>
+         <div class="pagination">
+        <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
     </div>
 </span>
     <span class="statistic">
