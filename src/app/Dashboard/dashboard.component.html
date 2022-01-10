@@ -52,8 +52,8 @@
       <div [ngStyle]="{fontWeight:'bold'}">Balance Details</div>
       <div> Доход от активов:
         <div
-          [ngStyle]="{fontWeight:'bold',fontSize:'20px',color: (activeSums-passiveSum)  < 0 ? 'red':'green'}">{{activeSums - passiveSum}}
-          $
+          [ngStyle]="{fontWeight:'bold',fontSize:'20px',color: (activeSums-passiveSum)  < 0 ? 'red':'green'}">${{activeSums - passiveSum}}
+
         </div>
       </div>
       <div class="grid">

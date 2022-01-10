@@ -100,6 +100,7 @@ this.store[0].transactions.push({name:name,amount:balance,plus:true,date:new Dat
   );
 }
 public setStore(data:any){
+
   this.store[0].balance=data.money;
   this.store[0].totalInvoices=data.totalInvoices;
   this.store[0].transactions=data.transactions;
