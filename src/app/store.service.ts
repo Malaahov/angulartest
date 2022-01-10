@@ -79,7 +79,6 @@ public addActives(sum:number,name:string,type:number)
       type: number;
     }]
   }
-  const body = {actives:[{name:name,sum:sum,type:type}]}
   this.store[0].actives.push({name,sum,type});
   this.http.put<bodyType>('https://60f53a592208920017f39f9d.mockapi.io/balance/1', this.store[0]).subscribe(
     (data)=>{
@@ -109,7 +108,7 @@ public setStore(data:any){
   this.store[0].paidInvoices=data.paidInvoices;
   this.store[0].unpaidInvoices=data.unpaidInvoices;
   this.store[0].totalInvoicesSent=data.totalInvoicesSent;
-  this.store[0].totalTransactions=data.totalTransactions;
+  this.store[0].totalTransactions=data.transactionsCount;
   this.store[0].actives=data.actives;
   this.store[0].passives=data.passives;
 

@@ -1,11 +1,10 @@
-
+<div class="mainDiv">
   <p [ngStyle]="{fontSize:'30px', marginRight:'7%'}">My Wallet</p>
   <div>Сумма<input [(ngModel)]="inputBalance"></div>
   <div>Описание<input [(ngModel)]="sendFor"></div>
   <button class="btn btn-primary" (click)="addBalanceCount()">Добавить</button>
   <hr>
-
   <input placeholder="Сумма" [(ngModel)]="inputBalance">
   <input [(ngModel)]="sendFor">
   <button class="btn btn-primary" (click)="sendMoney()">Отправить</button>
-
+</div>

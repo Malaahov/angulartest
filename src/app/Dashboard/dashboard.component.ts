@@ -24,7 +24,6 @@ export class Dashboard implements OnInit {
   activesSum(actives:any){
     for (var i = 0; i< actives.length; i++)
     {
-
       if(actives[i].type == 1)
       {
       this.activeSums+= (actives[i].sum*4);

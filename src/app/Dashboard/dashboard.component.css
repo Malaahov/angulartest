@@ -157,6 +157,15 @@ font-family: 'DM Sans' ,'arial', sans-serif;;
   margin-top: 10px;
   margin-left: 10px;
 }
+.balanceDetailsBody
+{
+  color: white;
+  font-weight: bold;
+  background: #0E6EFF;
+  border-radius: 5px;
+  width: 80%;
+  padding: 10px;
+}
 .img{
   align:right;
   margin-left: 2%;
