@@ -48,6 +48,10 @@ font-family: 'DM Sans' ,'arial', sans-serif;;
 }
 .total
 {
+  background-image: url(../../assets/ellipse.png);
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: right bottom;
   background-color: #03B664;
   display:inline-block;
   width: 200px;
@@ -58,6 +62,10 @@ font-family: 'DM Sans' ,'arial', sans-serif;;
 }
 .paid
 {
+  background-image: url(../../assets/ellipse.png);
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: right bottom;
   background-color: #01BEFF;
   display:inline-block;
   width: 200px;
@@ -69,6 +77,10 @@ font-family: 'DM Sans' ,'arial', sans-serif;;
 
 .unpaid
 {
+  background-image: url(../../assets/ellipse.png);
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: right bottom;
   background-color: #FFBF26;
   display:inline-block;
   width: 200px;
@@ -80,6 +92,10 @@ font-family: 'DM Sans' ,'arial', sans-serif;;
 
 .totalSent
 {
+  background-image: url(../../assets/ellipse.png);
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: right bottom;
   background-color: #FF684D;
   display:inline-block;
   width: 200px;
@@ -136,7 +152,11 @@ padding:10px;
 }
 
 .balance {
-  background: linear-gradient(247.35deg, #936DFF 0%, #3ED1FF 100%);
+  background-image: url(../../assets/ellipse.png);
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: right bottom;
+  background: linear-gradient(247.35deg, #936DFF 0%, #3ED1FF 100%) ;
   display: inline-block;
   width: 300px;
   height: 150px;
