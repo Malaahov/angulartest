@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { HttpClient} from "@angular/common/http";
 import {StoreService} from "../store.service";
 import {ChartType} from "angular-google-charts";
+import {activesType, passivesType, storeType} from "../types/types";
 
 @Component({
   selector: 'dash-comp',
@@ -9,9 +10,10 @@ import {ChartType} from "angular-google-charts";
   styleUrls: ['./dashboard.component.css'],
 
 })
+
 export class Dashboard implements OnInit {
   totalTransactions:number = 0;
-  store:any = [];
+  store:Array<storeType> = [];
   activeSums:number=0;
   passiveSum:number=0;
   currentPage:number=1;
@@ -22,7 +24,7 @@ export class Dashboard implements OnInit {
   totalInvoicesSent:number = 0;
   title = '';
   type = ChartType.PieChart;
-  activesSum(actives:any){
+  activesSum(actives:Array<activesType>){
     for (var i = 0; i< actives.length; i++)
     {
       if(actives[i].type == 1)
@@ -40,7 +42,7 @@ export class Dashboard implements OnInit {
     }
     return this.activeSums;
   }
-  passivesSum(passives:any){
+  passivesSum(passives:Array<passivesType>){
     for (var i = 0; i< passives.length; i++)
     {
       if(passives[i].type == 1)
@@ -79,7 +81,7 @@ export class Dashboard implements OnInit {
   constructor(private http:HttpClient, storeService: StoreService) {
     this._storeService = storeService;
   }
-  getDate(date:any)
+  getDate(date:Date)
   {
     const dates:string =  new Date(date).getDate() + "/" + (new Date(date).getMonth()+1)+"/" + new Date(date).getFullYear();
     return dates;

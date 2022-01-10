@@ -1,11 +1,13 @@
 import {Injectable, OnInit} from '@angular/core';
 import { HttpClient} from "@angular/common/http";
+import { storeType} from "./types/types";
+
 @Injectable({
   providedIn: 'root',
 })
 export class StoreService implements OnInit {
-private store = [
-  {balance:1000,actives:[{name:'',sum:0,type:1}],passives:[{name:'',sum:0,type:1}], totalInvoices:0,transactions:[{name:'',amount:0,plus:true,date: new Date()}],bills:[],billsPaid:0,paidInvoices:0,unpaidInvoices:0,totalInvoicesSent:0,totalTransactions:0}
+private store:Array<storeType>= [
+  {balance:1000,actives:[{name:'',sum:0,type:1}],passives:[{name:'',sum:0,type:1}], totalInvoices:0,transactions:[{name:'',amount:0,plus:true,date: new Date()}],bills:[{name:'111',price:111}],billsPaid:0,paidInvoices:0,unpaidInvoices:0,totalInvoicesSent:0,totalTransactions:0}
 ]
   constructor(private http:HttpClient) { }
 public getStore(){
@@ -99,9 +101,9 @@ this.store[0].transactions.push({name:name,amount:balance,plus:true,date:new Dat
     }
   );
 }
-public setStore(data:any){
+public setStore(data:storeType){
 
-  this.store[0].balance=data.money;
+  this.store[0].balance=data.balance;
   this.store[0].totalInvoices=data.totalInvoices;
   this.store[0].transactions=data.transactions;
   this.store[0].bills=data.bills;
@@ -109,7 +111,7 @@ public setStore(data:any){
   this.store[0].paidInvoices=data.paidInvoices;
   this.store[0].unpaidInvoices=data.unpaidInvoices;
   this.store[0].totalInvoicesSent=data.totalInvoicesSent;
-  this.store[0].totalTransactions=data.transactionsCount;
+  this.store[0].totalTransactions=data.totalTransactions;
   this.store[0].actives=data.actives;
   this.store[0].passives=data.passives;
 
