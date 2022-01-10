@@ -64,7 +64,6 @@ export class Dashboard implements OnInit {
     ['2', this.passiveSum],
   ];
   options = {
-
     colors: ['#03B664', 'red' ]
   };
   width = 300;
@@ -73,14 +72,17 @@ export class Dashboard implements OnInit {
     {name:'', price:0}
 
   ]
-  transactions = [
-    {name:'Возврат', amount:2000 ,plus:true, date:new Date()},
-  ];
+
 
 
   private _storeService;
   constructor(private http:HttpClient, storeService: StoreService) {
     this._storeService = storeService;
+  }
+  getDate(date:any)
+  {
+    const dates:string =  new Date(date).getDate() + "/" + (new Date(date).getMonth()+1)+"/" + new Date(date).getFullYear();
+    return dates;
   }
   ngOnInit()
   {

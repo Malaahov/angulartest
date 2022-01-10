@@ -23,7 +23,7 @@
 
 p
 {
- font-family: 'DM Sans' ,'arial', sans-serif;;
+ font-family: 'DM Sans' ,'arial', sans-serif;
   font-weight: bold;
   font-size: 23px;
 }
@@ -90,8 +90,14 @@ font-family: 'DM Sans' ,'arial', sans-serif;;
 }
 .latestTransactionGrid
 {
+  font-family: 'DM Sans' ,'arial', sans-serif;
+  font-size:17px;
+  margin-top: 2px;
+  background-color:#E5E5E5 ;
+  border-radius: 5px;
+padding:10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .latesTransactions
 {
@@ -170,4 +176,7 @@ font-family: 'DM Sans' ,'arial', sans-serif;;
   align:right;
   margin-left: 2%;
 }
+.transactionItem
+{
 
+}
