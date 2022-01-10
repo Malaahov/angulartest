@@ -67,13 +67,19 @@ public addPassives(sum:number,name:string,type:number)
 public addActives(sum:number,name:string,type:number)
 {
   interface bodyType{
-    actives: {
+    money:number,
+    totalInvoices:number,
+    paidInvoices:number,
+    unpaidInvoices:number,
+    totalInvoicesSent:number,
+    bills:[{}]
+    actives:[ {
       name: string;
       sum: number;
       type: number;
-    }
+    }]
   }
-  const body = {passives:{name:name,sum:sum,type:type}}
+  const body = {actives:[{name:name,sum:sum,type:type}]}
   this.store[0].actives.push({name,sum,type});
   this.http.put<bodyType>('https://60f53a592208920017f39f9d.mockapi.io/balance/1', this.store[0]).subscribe(
     (data)=>{

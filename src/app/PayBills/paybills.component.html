@@ -1,6 +1,6 @@
 <div class="mainDiv"><div><p>Активы</p>
-Сумма:<input placeholder="сумма" [(ngModel)]="activeSum">Источник<input  placeholder="источник"  [(ngModel)]="activeName">
-<select [(ngModel)]="activeType" >
+Сумма:<input type="number" placeholder="сумма" [(ngModel)]="activeSum">Источник<input  placeholder="источник"  [(ngModel)]="activeName">
+<select type="number" [(ngModel)]="activeType" >
   <option value="1">Раз в неделю</option>
   <option value="2">Раз в две недели</option>
   <option value="3">Раз в месяц</option>
@@ -13,8 +13,8 @@
   </span>
 </div>
   <div><p>Пассивы</p>
-    <input placeholder="сумма" [(ngModel)]="passiveSum"><input placeholder="источник"  [(ngModel)]="passiveName">
-    <select [(ngModel)]="passiveType">
+    <input type="number" placeholder="сумма" [(ngModel)]="passiveSum"><input placeholder="источник"  [(ngModel)]="passiveName">
+    <select type="number" [(ngModel)]="passiveType">
       <option value="1">Раз в неделю</option>
       <option value="2">Раз в две недели</option>
       <option value="3">Раз в месяц</option>
