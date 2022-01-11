@@ -6,26 +6,26 @@ import {activesType, passivesType, storeType} from "./types/types";
   providedIn: 'root',
 })
 export class StoreService implements OnInit {
-private store:Array<storeType>= [
+private store:storeType=
   {balance:1000,actives:[{name:'',sum:0,type:1}],passives:[{name:'',sum:0,type:1}], totalInvoices:0,transactions:[{name:'',amount:0,plus:true,date: new Date()}],bills:[{name:'111',price:111}],billsPaid:0,paidInvoices:0,unpaidInvoices:0,totalInvoicesSent:0,totalTransactions:0}
-]
-  private passiveSum:number=0;
+
+  public passiveSum:number=0;
   constructor(private http:HttpClient) { }
 public getStore(){
   return this.store;
 }
 public sendMoneyTo(balance:number,name:string)
 {
-  if(balance>this.store[0].balance)
+  if(balance>this.store.balance)
   {
     alert('Недостаточно средств')
   }
   else {
-    this.store[0].balance=this.store[0].balance - balance;
-    this.store[0].totalInvoicesSent=this.store[0].totalInvoicesSent +=+ balance;
-    this.store[0].totalTransactions++;
-    this.store[0].transactions.push({name:name,amount:balance,plus:false,date:new Date()})
-    const body= {balance:this.store[0].balance ,transactionsCount:this.store[0].totalTransactions, bills:this.store[0].bills,paidBills:this.store[0].billsPaid, paidInvoices:this.store[0].paidInvoices, totalInvoicesSent:this.store[0].totalInvoicesSent,  totalInvoices:this.store[0].totalInvoices, unpaidInvoices:this.store[0].unpaidInvoices, transactions:this.store[0].transactions};
+    this.store.balance=this.store.balance - balance;
+    this.store.totalInvoicesSent=this.store.totalInvoicesSent +=+ balance;
+    this.store.totalTransactions++;
+    this.store.transactions.push({name:name,amount:balance,plus:false,date:new Date()})
+    const body= {balance:this.store.balance ,transactionsCount:this.store.totalTransactions, bills:this.store.bills,paidBills:this.store.billsPaid, paidInvoices:this.store.paidInvoices, totalInvoicesSent:this.store.totalInvoicesSent,  totalInvoices:this.store.totalInvoices, unpaidInvoices:this.store.unpaidInvoices, transactions:this.store.transactions};
     this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', body).subscribe(
       (data)=>{
 
@@ -35,16 +35,16 @@ public sendMoneyTo(balance:number,name:string)
 }
 public payBills(name:string,price:number,index:number)
 {
-  if(this.store[0].balance>price)
+  if(this.store.balance>price)
   {
-    this.store[0].balance = this.store[0].balance - price;
-    this.store[0].paidInvoices= this.store[0].paidInvoices +=+ 1;
-    this.store[0].unpaidInvoices=this.store[0].unpaidInvoices - 1;
-    this.store[0].billsPaid=this.store[0].billsPaid +=+ price;
-    this.store[0].transactions.push({name:name,amount:price,plus:true,date:new Date()})
-    this.store[0].totalTransactions++;
-    delete this.store[0].bills[index];
-    const body= {money:this.store[0].balance ,transactionsCount:this.store[0].totalTransactions, bills:this.store[0].bills,paidBills:this.store[0].billsPaid, paidInvoices:this.store[0].paidInvoices,  totalInvoices:this.store[0].totalInvoices, unpaidInvoices:this.store[0].unpaidInvoices, transactions:this.store[0].transactions};
+    this.store.balance = this.store.balance - price;
+    this.store.paidInvoices= this.store.paidInvoices +=+ 1;
+    this.store.unpaidInvoices=this.store.unpaidInvoices - 1;
+    this.store.billsPaid=this.store.billsPaid +=+ price;
+    this.store.transactions.push({name:name,amount:price,plus:true,date:new Date()})
+    this.store.totalTransactions++;
+    delete this.store.bills[index];
+    const body= {money:this.store.balance ,transactionsCount:this.store.totalTransactions, bills:this.store.bills,paidBills:this.store.billsPaid, paidInvoices:this.store.paidInvoices,  totalInvoices:this.store.totalInvoices, unpaidInvoices:this.store.unpaidInvoices, transactions:this.store.transactions};
     this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', body).subscribe(
       (data)=>{
 
@@ -58,9 +58,8 @@ public payBills(name:string,price:number,index:number)
 }
 public addPassives(sum:number,name:string,type:number)
 {
-  const body = {passives:{name:name,sum:sum,type:type}}
-  this.store[0].passives.push({name,sum,type});
-  this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', this.store[0]).subscribe(
+  this.store.passives.push({name,sum,type});
+  this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', this.store).subscribe(
     (data)=>{
 
     }
@@ -82,8 +81,8 @@ public addActives(sum:number,name:string,type:number)
       type: number;
     }]
   }
-  this.store[0].actives.push({name,sum,type});
-  this.http.put<bodyType>('https://60f53a592208920017f39f9d.mockapi.io/balance/1', this.store[0]).subscribe(
+  this.store.actives.push({name,sum,type});
+  this.http.put<bodyType>('https://60f53a592208920017f39f9d.mockapi.io/balance/1', this.store).subscribe(
     (data)=>{
 
     }
@@ -91,31 +90,31 @@ public addActives(sum:number,name:string,type:number)
 }
 public addMoney(balance:number,name:string)
 {
-this.store[0].balance=this.store[0].balance +=+ balance;
-this.store[0].totalInvoices=this.store[0].totalInvoices +=+ balance;
-this.store[0].totalTransactions++;
-this.store[0].transactions.push({name:name,amount:balance,plus:true,date:new Date()})
-  const body= {balance:this.store[0].balance ,transactionsCount:this.store[0].totalTransactions, bills:this.store[0].bills,paidBills:this.store[0].billsPaid, paidInvoices:this.store[0].paidInvoices,  totalInvoices:this.store[0].totalInvoices, unpaidInvoices:this.store[0].unpaidInvoices, transactions:this.store[0].transactions};
+this.store.balance=this.store.balance +=+ balance;
+this.store.totalInvoices=this.store.totalInvoices +=+ balance;
+this.store.totalTransactions++;
+this.store.transactions.push({name:name,amount:balance,plus:true,date:new Date()})
+  const body= {balance:this.store.balance ,transactionsCount:this.store.totalTransactions, bills:this.store.bills,paidBills:this.store.billsPaid, paidInvoices:this.store.paidInvoices,  totalInvoices:this.store.totalInvoices, unpaidInvoices:this.store.unpaidInvoices, transactions:this.store.transactions};
   this.http.put('https://60f53a592208920017f39f9d.mockapi.io/balance/1', body).subscribe(
     (data)=>{
 
     }
   );
 }
-  passivesSum(passives:Array<passivesType>){
-    for (var i = 0; i< passives.length; i++)
+  passivesSum(){
+    for (var i = 0; i< this.store.passives.length; i++)
     {
-      if(passives[i].type == 1)
+      if(this.store.passives[i].type == 1)
       {
-        this.passiveSum+= (passives[i].sum*4);
+        this.passiveSum+= (this.store.passives[i].sum*4);
       }
-      if(passives[i].type == 2)
+      if(this.store.passives[i].type == 2)
       {
-        this.passiveSum+= (passives[i].sum*2);
+        this.passiveSum+= (this.store.passives[i].sum*2);
       }
-      if(passives[i].type == 3)
+      if(this.store.passives[i].type == 3)
       {
-        this.passiveSum+= passives[i].sum;
+        this.passiveSum+= this.store.passives[i].sum;
       }
 
     }
@@ -124,17 +123,17 @@ this.store[0].transactions.push({name:name,amount:balance,plus:true,date:new Dat
   }
 public setStore(){
   this.http.get('https://60f53a592208920017f39f9d.mockapi.io/balance/1').subscribe((data:any) => {
-    this.store[0].balance=data.balance;
-    this.store[0].totalInvoices=data.totalInvoices;
-    this.store[0].transactions=data.transactions;
-    this.store[0].bills=data.bills;
-    this.store[0].billsPaid=data.billsPaid;
-    this.store[0].paidInvoices=data.paidInvoices;
-    this.store[0].unpaidInvoices=data.unpaidInvoices;
-    this.store[0].totalInvoicesSent=data.totalInvoicesSent;
-    this.store[0].totalTransactions=data.totalTransactions;
-    this.store[0].actives=data.actives;
-    this.store[0].passives=data.passives;
+    this.store.balance=data.balance;
+    this.store.totalInvoices=data.totalInvoices;
+    this.store.transactions=data.transactions;
+    this.store.bills=data.bills;
+    this.store.billsPaid=data.billsPaid;
+    this.store.paidInvoices=data.paidInvoices;
+    this.store.unpaidInvoices=data.unpaidInvoices;
+    this.store.totalInvoicesSent=data.totalInvoicesSent;
+    this.store.totalTransactions=data.totalTransactions;
+    this.store.actives=data.actives;
+    this.store.passives=data.passives;
   });
 
 

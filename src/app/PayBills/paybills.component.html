@@ -5,7 +5,7 @@
   <option value=2>Раз в две недели</option>
   <option value=3>Раз в месяц</option>
 </select><button class="btn btn-primary" (click)="addActives()">Добавить</button></div>
-<div [ngStyle]="{padding:'5px'}" *ngFor="let active of store[0].actives; let idx=index;">
+<div [ngStyle]="{padding:'5px'}" *ngFor="let active of store.actives; let idx=index;">
   <span [ngStyle]="{fontWeight:'bold',borderColor:'black',borderWidth:'2px',borderRadius:'5px',padding:'5px',backgroundColor: (idx+1) % 2 === 0 ? 'white':'gray'}">{{active.name}}  {{active.sum}}$
   <span *ngIf="active.type===1">Раз в неделю</span>
   <span *ngIf="active.type===2">Раз в две недели</span>
@@ -19,14 +19,14 @@
       <option value=2>Раз в две недели</option>
       <option value=3>Раз в месяц</option>
     </select><button  class="btn btn-primary" (click)="addPassives()">Добавить</button></div>
-<div *ngFor="let passives of store[0].passives; let idx=index;">{{passives.name}}  {{passives.sum}}
+<div *ngFor="let passives of store.passives; let idx=index;">{{passives.name}}  {{passives.sum}}
   <span *ngIf="passives.type===1">Раз в неделю</span>
   <span *ngIf="passives.type===2">Раз в две недели</span>
   <span *ngIf="passives.type===3">Раз в месяц</span></div>
 
 <hr>
 <p [ngStyle]="{fontSize:'30px', marginRight:'7%'}">Неоплаченные счета</p>
-<div  *ngFor="let bills of store[0].bills; let idx=index;" >{{bills.name}}
+<div  *ngFor="let bills of store.bills; let idx=index;" >{{bills.name}}
   <button  (click)="payBill(bills.name,bills.price, idx)">Оплатить</button>
 </div>
 </div>

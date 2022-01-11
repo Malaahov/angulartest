@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { HttpClient} from "@angular/common/http";
 import {StoreService} from "../store.service";
+import {storeType} from "../types/types";
 
 @Component({
   selector: 'pay-bills',
@@ -15,7 +16,30 @@ export class PayBills {
   passiveSum:number=0;
   passiveName:string='';
   passiveType:number=1;
-  store:any=[];
+  store:storeType = {
+    balance:0,
+    totalInvoices:0,
+    transactions:[
+      {name:'string',
+        amount:0,
+        plus:true,
+        date:"1"
+      }
+    ],
+    billsPaid:0,
+    bills:[
+      {
+        name:'string',
+        price:0,
+      }
+    ],
+    paidInvoices:0,
+    unpaidInvoices:0,
+    totalInvoicesSent:0,
+    totalTransactions:0,
+    actives: [],
+    passives:[],
+  };
   private _storeService;
   constructor(private http:HttpClient, storeService: StoreService) {
     this._storeService = storeService;

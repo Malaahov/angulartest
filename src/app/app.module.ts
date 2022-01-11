@@ -13,7 +13,8 @@ import { Routes, RouterModule} from "@angular/router";
 import {Dashboard} from "./Dashboard/dashboard.component";
 import {NgxPaginationModule} from 'ngx-pagination';
  const appRoutes: Routes =[
-   {path:'', component:Dashboard},
+   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+   {path:'dashboard', component:Dashboard},
    {path:'wallet', component:MyWallet},
    {path:'bills', component:PayBills}
 

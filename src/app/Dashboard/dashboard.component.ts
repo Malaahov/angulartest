@@ -14,7 +14,30 @@ import {activesType, passivesType, storeType} from "../types/types";
 export class Dashboard implements OnInit {
   private _storeService;
   totalTransactions:number = 0;
-  store:Array<storeType> = [];
+  store:storeType = {
+    balance:0,
+    totalInvoices:0,
+    transactions:[
+      {name:'string',
+        amount:0,
+        plus:true,
+        date:"1"
+      }
+    ],
+    billsPaid:0,
+    bills:[
+      {
+        name:'string',
+        price:0,
+      }
+    ],
+    paidInvoices:0,
+    unpaidInvoices:0,
+    totalInvoicesSent:0,
+    totalTransactions:0,
+    actives: [],
+    passives:[],
+  };
   activeSums:number=0;
   passiveSum:number=0;
   currentPage:number=1;
@@ -82,8 +105,8 @@ export class Dashboard implements OnInit {
   {
     this._storeService.setStore();
     this.store = this._storeService.getStore();
-    this.activesSum(this.store[0].actives);;
-    this.passivesSum(this.store[0].passives);
+this.activeSums=this.activesSum(this.store.actives);
+this.passiveSum=this.passivesSum(this.store.passives);
     this.data = [
       ['Активы', this.activeSums],
       ['Пассивы', this.passiveSum],

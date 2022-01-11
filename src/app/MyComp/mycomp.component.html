@@ -1,25 +1,25 @@
 <div class="wrapped">
   <div>
     <div [ngStyle]="{marginTop:'40%'}">
-      <a routerLink="" class="activeLink">
+      <a routerLink="dashboard" class="activeLink" routerLinkActive="link">
         <span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}"
                                               src="../assets/dashboard.png">Dashboard</span></a>
-      <a routerLink="wallet" class="link" routerLinkActive="activeLink">
+      <a routerLink="wallet" class="activeLink" routerLinkActive="link">
         <span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}"
                                               src="../assets/wallet.png">My Wallet</span></a>
-      <a routerLink="bills" class="link"
+      <a routerLink="bills" class="activeLink" routerLinkActive="link"
               >
         <span [ngStyle]="{float:'left'}"><img [ngStyle]="{marginRight:'10px'}"
                                               src="../assets/payment.png">Payment</span></a>
-      <div class="link"
+      <div class="activeLink"
         [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}">
         <img [ngStyle]="{marginRight:'10px'}" src="../assets/invoice.png">Invoice
       </div>
-      <div class="link"
+      <div class="activeLink"
         [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}">
         <img [ngStyle]="{marginRight:'10px'}" src="../assets/settings.png">Setting
       </div>
-      <div class="link"
+      <div class="activeLink"
         [ngStyle]="{fontWeight:'bold',fontSize:'20px', width:'284px', height:'60px', borderRadius:'5px', padding:'10px', color:'gray'}">
         <img [ngStyle]="{marginRight:'10px'}" src="../assets/payment.png">Transactions
       </div>
