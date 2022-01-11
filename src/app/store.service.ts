@@ -8,8 +8,6 @@ import {activesType, passivesType, storeType} from "./types/types";
 export class StoreService implements OnInit {
 private store:storeType=
   {balance:1000,actives:[{name:'',sum:0,type:1}],passives:[{name:'',sum:0,type:1}], totalInvoices:0,transactions:[{name:'',amount:0,plus:true,date: new Date()}],bills:[{name:'111',price:111}],billsPaid:0,paidInvoices:0,unpaidInvoices:0,totalInvoicesSent:0,totalTransactions:0}
-
-  public passiveSum:number=0;
   constructor(private http:HttpClient) { }
 public getStore(){
   return this.store;
@@ -101,28 +99,10 @@ this.store.transactions.push({name:name,amount:balance,plus:true,date:new Date()
     }
   );
 }
-  passivesSum(){
-    for (var i = 0; i< this.store.passives.length; i++)
-    {
-      if(this.store.passives[i].type == 1)
-      {
-        this.passiveSum+= (this.store.passives[i].sum*4);
-      }
-      if(this.store.passives[i].type == 2)
-      {
-        this.passiveSum+= (this.store.passives[i].sum*2);
-      }
-      if(this.store.passives[i].type == 3)
-      {
-        this.passiveSum+= this.store.passives[i].sum;
-      }
 
-    }
-    alert(this.passiveSum);
-    return this.passiveSum;
-  }
 public setStore(){
-  this.http.get('https://60f53a592208920017f39f9d.mockapi.io/balance/1').subscribe((data:any) => {
+
+ return  this.http.get('https://60f53a592208920017f39f9d.mockapi.io/balance/1').toPromise().then((data:any) => {
     this.store.balance=data.balance;
     this.store.totalInvoices=data.totalInvoices;
     this.store.transactions=data.transactions;
@@ -134,6 +114,7 @@ public setStore(){
     this.store.totalTransactions=data.totalTransactions;
     this.store.actives=data.actives;
     this.store.passives=data.passives;
+
   });
 
 

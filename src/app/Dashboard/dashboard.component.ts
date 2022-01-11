@@ -11,7 +11,7 @@ import {activesType, passivesType, storeType} from "../types/types";
 
 })
 
-export class Dashboard implements OnInit {
+export class Dashboard {
   private _storeService;
   totalTransactions:number = 0;
   store:storeType = {
@@ -43,8 +43,18 @@ export class Dashboard implements OnInit {
   currentPage:number=1;
   title = '';
   type = ChartType.PieChart;
-  constructor(private http:HttpClient, storeService: StoreService) {
+  constructor( storeService: StoreService) {
     this._storeService = storeService;
+    this._storeService.setStore().then(()=>{
+      this.store = this._storeService.getStore();
+      this.passivesSum(this.store.passives);
+      this.activesSum(this.store.actives);
+      this.data = [
+        ['Активы', this.activeSums],
+        ['Пассивы', this.passiveSum],
+      ];
+    });
+
   }
   activesSum(actives:Array<activesType>){
     for (var i = 0; i< actives.length; i++)
@@ -101,19 +111,6 @@ export class Dashboard implements OnInit {
     const dates:string =  new Date(date).getDate() + "/" + (new Date(date).getMonth()+1)+"/" + new Date(date).getFullYear();
     return dates;
   }
-  ngOnInit()
-  {
-    this._storeService.setStore();
-    this.store = this._storeService.getStore();
-this.activeSums=this.activesSum(this.store.actives);
-this.passiveSum=this.passivesSum(this.store.passives);
-    this.data = [
-      ['Активы', this.activeSums],
-      ['Пассивы', this.passiveSum],
-    ];
-
-  }
-
 
 
 
